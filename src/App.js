@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
+import ConvertButton from './components/ConvertButton';
+import InputTextBox from './components/InputTextBox';
+import OutputTextBox from './components/OutputTextBox';
 
 function App() {
+  const [outputData,setOutputData]=useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className='row'>
+        <div className='col-6'>
+          <InputTextBox></InputTextBox>
+        </div>
+        <div className='col-6'>
+          <OutputTextBox outputData={outputData} setOutputData={setOutputData}></OutputTextBox>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col text-center'>
+        <ConvertButton outputData={outputData} setOutputData={setOutputData} name={"Encrypt"}></ConvertButton>
+        
+        <ConvertButton outputData={outputData} setOutputData={setOutputData} name={"Decrypt"}></ConvertButton>
+        </div>
+      </div>
+
+
     </div>
   );
 }
